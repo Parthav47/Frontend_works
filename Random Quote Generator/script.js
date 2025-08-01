@@ -89,5 +89,5 @@ newQuoteBtn.addEventListener('click', () => {
         displayRandomQuote();
         changeColors();
         quoteBox.classList.remove('flip');
-    }, 300); // Halfway through the animation
+    }, 300); 
 })
