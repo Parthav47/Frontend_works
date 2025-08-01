@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Internship Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(2, 300px);
+      grid-template-rows: repeat(2, 300px);
+      gap: 30px;
+    }
+
+    .box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 14px;
+      text-align: left;
+      padding: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .title {
+      width: 100%;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    ul {
+      padding-left: 18px;
+      margin: 0;
+    }
+
+    .button-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      background-color: #fff;
+      color: #4CAF50;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #45a049;
+      color: white;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box" id="box1"></div>
+    <div class="box" id="box2"></div>
+    <div class="box" id="box3"></div>
+    <div class="box" id="box4"></div>
+  </div>
+
+  <script src="information.js"></script>
+  <script>
+    const boxes = [
+      document.getElementById('box1'),
+      document.getElementById('box2'),
+      document.getElementById('box3'),
+      document.getElementById('box4')
+    ];
+
+    data.forEach((internship, index) => {
+      if (boxes[index]) {
+        boxes[index].innerHTML = `
+          <div class="title">${internship.title.replace('/b', '<br>')}</div>
+          <ul>
+            <li>Duration: ${internship.Duration}</li>
+            <li>Location: ${internship.Location}</li>
+            <li>Stipend: ${internship.Stipend}</li>
+            <li>Start Date: ${internship.StartDate}</li>
+          </ul>
+          <div class="button-wrapper">
+            <a href=${internship.link} target='_blank'><button class="btn">Apply Now</button></a>
+          </div>
+        `;
+      }
+    });
+  </script>
+</body>
+</html>
