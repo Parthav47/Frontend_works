@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Registration Form</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #d4fc79, #96e6a1);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 40px 30px ; 
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      width: 350px; 
+      color: #fff;
+    }
+
+    .glass-card h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .glass-card label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    .glass-card input, .glass-card select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #000;
+    }
+
+    .glass-card input[type="file"] {
+      padding: 5px;
+    }
+
+    .glass-card .checkbox {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .glass-card .checkbox input {
+      margin-right: 10px;
+    }
+
+    .password-strength {
+      height: 8px;
+      border-radius: 5px;
+      background: #ddd;
+      margin-top: -5px;
+      margin-bottom: 10px;
+    }
+
+    .strength-weak {
+      background: red;
+      width: 33%;
+    }
+    .strength-medium {
+      background: orange;
+      width: 66%;
+    }
+    .strength-strong {
+      background: green;
+      width: 100%;
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.4);
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <form class="glass-card">
+    <h2>Vaults Of Code</h2>
+
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" name="firstName" required>
+
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" name="lastName" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required oninput="checkStrength(this.value)">
+    <div class="password-strength" id="strengthBar"></div>
+
+    <label for="confirmPassword">Confirm Password</label>
+    <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+    <label for="dob">Date of Birth</label>
+    <input type="date" id="dob" name="dob" required>
+
+    <label for="gender">Gender</label>
+    <select id="gender" name="gender" required>
+      <option value="">Select</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+
+    <label for="profilePic">Profile Picture</label>
+    <input type="file" id="profilePic" name="profilePic">
+
+    <button type="submit" class="submit-button">Register</button>
+  </form>
+
+  <script>
+    function checkStrength(password) {
+      const bar = document.getElementById("strengthBar");
+      if (password.length < 6) {
+        bar.className = "password-strength strength-weak";
+      } else if (password.match(/[a-z]/) && password.match(/[A-Z]/) && password.match(/[0-9]/)) {
+        bar.className = "password-strength strength-strong";
+      } else {
+        bar.className = "password-strength strength-medium";
+      }
+    }
+  </script>
+</body>
+</html>
